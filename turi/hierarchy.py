@@ -254,7 +254,7 @@ class Hierarchy:
                     if self.is_visible_method(c, method):
                         return m
 
-        raise NoConcreteDispatch('Could not resolve concrete dispatch!')
+        raise NoConcreteDispatch('1!!!!!!!Could not resolve concrete dispatch!')
 
     def resolve_special_dispatch(self, method, container):
         # container is the method that contains the invoke

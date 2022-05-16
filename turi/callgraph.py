@@ -56,8 +56,8 @@ class CallGraph:
         try:
             targets = self.project.hierarchy().resolve_invoke(invoke_expr, method, container_m)
         except NoConcreteDispatch as e:
-            targets = []
-            log.warning('Could not resolve concrete dispatch. External method?')
+            targets = [method]
+            log.warning('2!!!!!!!!Could not resolve concrete dispatch. External method?')
 
         for target in targets:
             if target.class_name in self.project.classes:

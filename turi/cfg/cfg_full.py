@@ -54,7 +54,7 @@ class CFGFull(CFGBase):
             targets = self.project.hierarchy().resolve_invoke(invoke_expr, method, container_m)
         except NoConcreteDispatch as e:
             targets = []
-            log.warning('Could not resolve concrete dispatch. External method?')
+            log.warning('3!!!!!!!Could not resolve concrete dispatch. External method?')
 
         for target in targets:
             if 'NATIVE' in target.attrs or 'ABSTRACT' in target.attrs:
