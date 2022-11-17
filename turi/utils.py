@@ -27,5 +27,5 @@ def walk_all_blocks(classes, methods=None):
         for method in cls.methods:
             if methods is not None and method not in methods:
                 continue
-            for block in method.blocks:
+            for block in method.blocks: # 有的interface没有blocks
                 yield block

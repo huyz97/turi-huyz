@@ -261,6 +261,20 @@ class Hierarchy:
         method_cls = self.project.classes[method.class_name]
         container_cls = self.project.classes[container.class_name]
 
+        if method.name == '<init>' and ('java.lang.Runnable' in method_cls.interfaces or 'okhttp3.Callback' in method_cls.interfaces):
+            # async framework
+            for m in method_cls.methods:
+                if m.name == "run":
+                    method = self.project.methods[(m.class_name, m.name, m.params)]
+                    return method
+
+        if method.name == '<init>' and ('io.reactivex.SingleOnSubscribe' in method_cls.interfaces or 'io.reactivex.ObservableOnSubscribe' in method_cls.interfaces):
+            # Rxjava
+            for m in method_cls.methods:
+                if m.name == "subscribe":
+                    method = self.project.methods[(m.class_name, m.name, m.params)]
+                    return method
+        
         if method.name == '<init>' or 'PRIVATE' in method.attrs:
             return method
 

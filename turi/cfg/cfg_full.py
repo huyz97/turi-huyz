@@ -56,6 +56,9 @@ class CFGFull(CFGBase):
             targets = []
             log.warning('3!!!!!!!Could not resolve concrete dispatch. External method?')
 
+        if targets==[]:
+            targets = [method]
+        
         for target in targets:
             if 'NATIVE' in target.attrs or 'ABSTRACT' in target.attrs:
                 # TODO should we use a dummy node for native methods?
